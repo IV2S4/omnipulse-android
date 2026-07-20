@@ -22,6 +22,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.ChatBubbleOutline
@@ -33,7 +34,6 @@ import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.PlayCircleOutline
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -266,7 +266,7 @@ private fun FeedPostCard(post: FeedPost) {
                 Text("${post.comments}")
                 Spacer(Modifier.weight(1f))
                 IconButton(onClick = {}) {
-                    Icon(Icons.Default.Send, contentDescription = "Share")
+                    Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Share")
                 }
             }
         }
@@ -362,7 +362,11 @@ private fun ClipCard(clip: Clip) {
                 Icon(Icons.Default.ChatBubbleOutline, contentDescription = "Clip comments", tint = Color.White)
             }
             IconButton(onClick = {}) {
-                Icon(Icons.Default.Send, contentDescription = "Share clip", tint = Color.White)
+                Icon(
+                    Icons.AutoMirrored.Filled.Send,
+                    contentDescription = "Share clip",
+                    tint = Color.White,
+                )
             }
         }
     }
@@ -690,7 +694,7 @@ private fun MessageComposer(
                 onClick = onSend,
                 enabled = value.isNotBlank(),
             ) {
-                Icon(Icons.Default.Send, contentDescription = "Send")
+                Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Send")
             }
         }
     }

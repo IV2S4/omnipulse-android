@@ -30,8 +30,10 @@ OmniPulse is a buildable single-activity Android application using Kotlin, Jetpa
 
 ## Verification
 
-Build from the repository root with:
+Verified on 2026-07-20 with:
 
 ```bash
-./gradlew assembleDebug
+./gradlew testDebugUnitTest assembleDebug
 ```
+
+Result: `BUILD SUCCESSFUL` using JDK 21, Android SDK 37, and Build Tools 36.0.0.
