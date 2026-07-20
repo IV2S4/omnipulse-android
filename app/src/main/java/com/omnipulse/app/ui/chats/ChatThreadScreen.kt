@@ -228,7 +228,7 @@ private fun GroupedBubbles(group: MessageGroup) {
                     } else {
                         message.sentAt
                     },
-                    modifier = Modifier.padding(horizontal = 5.dp, top = 2.dp),
+                    modifier = Modifier.padding(start = 5.dp, top = 2.dp, end = 5.dp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     style = MaterialTheme.typography.labelSmall,
                 )
