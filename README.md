@@ -8,7 +8,7 @@ Built incrementally by a Cursor Automation agent.
 
 ## Current MVP
 
-The current MVP includes a Material 3 app shell, an interactive social feed, and a vertically paged short-form Clips experience with per-clip playback, sound, and like state. See [PROGRESS.md](PROGRESS.md) for the completed scope and next slice.
+The current MVP includes a Material 3 app shell, an interactive social feed, a vertically paged short-form Clips experience, and searchable 1:1 chats with functional local message sending. See [PROGRESS.md](PROGRESS.md) for the completed scope and next slice.
 
 ## Build
 

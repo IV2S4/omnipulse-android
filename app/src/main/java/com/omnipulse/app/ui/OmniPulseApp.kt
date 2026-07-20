@@ -29,6 +29,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.omnipulse.app.ui.chats.ChatsScreen
+import com.omnipulse.app.ui.chats.rememberChatsUiState
 import com.omnipulse.app.ui.clips.ClipsScreen
 import com.omnipulse.app.ui.clips.rememberClipsUiState
 import com.omnipulse.app.ui.feed.FeedScreen
@@ -65,6 +67,7 @@ fun OmniPulseApp() {
     var destinationName by rememberSaveable { mutableStateOf(Destination.Pulse.name) }
     val currentDestination = Destination.valueOf(destinationName)
     val clipsUiState = rememberClipsUiState()
+    val chatsUiState = rememberChatsUiState()
     val isClipsDestination = currentDestination == Destination.Clips
 
     Scaffold(
@@ -112,6 +115,7 @@ fun OmniPulseApp() {
             when (currentDestination) {
                 Destination.Pulse -> FeedScreen()
                 Destination.Clips -> ClipsScreen(uiState = clipsUiState)
+                Destination.Chats -> ChatsScreen(uiState = chatsUiState)
                 else -> ComingSoonScreen(currentDestination)
             }
         }

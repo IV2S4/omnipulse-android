@@ -25,22 +25,29 @@ This file is the handoff between scheduled automation runs. Check completed work
 - Preserved independent like, mute, and playback state for each clip while navigating between app destinations.
 - Added an adaptive dark bottom navigation treatment for the Clips experience.
 
-## Next MVP slice
-
 ### Slice 3 — 1:1 messaging
 
-- Replace the Chats placeholder with a conversation inbox.
-- Add a functional chat thread with grouped incoming/outgoing messages and a message composer.
-- Support sending local messages, unread indicators, search, and deterministic sample conversations.
-- Preserve conversation state while navigating between app destinations.
+- Replaced the Chats placeholder with a searchable conversation inbox backed by deterministic local fixtures.
+- Added online presence, unread indicators, message previews, timestamps, and empty search results.
+- Added functional conversation threads with grouped incoming/outgoing bubbles and call affordances.
+- Added a message composer that trims and sends local messages, updates inbox previews, and preserves drafts, sent messages, unread state, and the open thread while navigating between app destinations.
+- Added unit tests for search, unread handling, draft retention, and message sending.
+
+## Next MVP slice
+
+### Slice 4 — AI assistant panel
+
+- Replace the AI placeholder with an Omni assistant conversation.
+- Add prompt suggestions, local deterministic response generation, and a streaming-response simulation.
+- Support clearing history and stopping a response.
+- Preserve assistant conversation state while navigating between app destinations.
 
 ## Backlog
 
-1. AI assistant panel with local streaming-response simulation and conversation history.
-2. Feed composer flow and post creation.
-3. Shared profile surfaces and search.
-4. Data/repository layer, persistence, backend integration, and authentication.
-5. Automated UI tests and accessibility regression coverage.
+1. Feed composer flow and post creation.
+2. Shared profile surfaces and search.
+3. Data/repository layer, persistence, backend integration, and authentication.
+4. Automated UI tests and accessibility regression coverage.
 
 ## Build
 
