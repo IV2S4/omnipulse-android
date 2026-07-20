@@ -18,6 +18,8 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Send
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material.icons.rounded.ChatBubble
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
@@ -25,8 +27,6 @@ import androidx.compose.material.icons.rounded.MusicNote
 import androidx.compose.material.icons.rounded.Pause
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Repeat
-import androidx.compose.material.icons.rounded.VolumeOff
-import androidx.compose.material.icons.rounded.VolumeUp
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -286,7 +286,11 @@ private fun ClipsHeader(
                 .background(Color.Black.copy(alpha = 0.3f), CircleShape),
         ) {
             Icon(
-                imageVector = if (muted) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
+                imageVector = if (muted) {
+                    Icons.AutoMirrored.Rounded.VolumeOff
+                } else {
+                    Icons.AutoMirrored.Rounded.VolumeUp
+                },
                 contentDescription = if (muted) "Unmute clip" else "Mute clip",
                 tint = Color.White,
             )
