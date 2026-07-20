@@ -17,23 +17,29 @@ This file is the handoff between scheduled automation runs. Check completed work
   - interactive like and bookmark state with accessible action labels
 - Added intentional placeholders for the three destinations not yet implemented.
 
-## Next MVP slice
-
 ### Slice 2 — Short-form Clips experience
 
-- Replace the Clips placeholder with a vertically paged, full-screen clip feed.
-- Add play/pause controls, creator metadata, captions, audio attribution, and action rail.
-- Use local visual fixtures so the feature remains deterministic and buildable without backend services.
-- Preserve per-clip like and mute state during navigation.
+- Replaced the Clips placeholder with a vertically paged, full-screen clip feed.
+- Added tap-to-play/pause behavior, per-clip mute controls, creator metadata, captions, audio attribution, and action rails.
+- Added deterministic local clip fixtures with original OmniPulse visuals and no backend or media dependency.
+- Preserved pager position and per-clip like, mute, and playback state while moving between clips and app destinations.
+
+## Next MVP slice
+
+### Slice 3 — 1:1 messaging
+
+- Replace the Chats placeholder with a conversation inbox using local deterministic fixtures.
+- Add search, unread indicators, presence states, message previews, and timestamps.
+- Open a conversation thread with incoming/outgoing bubbles and a working local message composer.
+- Preserve draft and sent-message state while navigating between destinations.
 
 ## Backlog
 
-1. 1:1 conversation list and chat thread.
-2. AI assistant panel with local streaming-response simulation and conversation history.
-3. Feed composer flow and post creation.
-4. Shared profile surfaces and search.
-5. Data/repository layer, persistence, backend integration, and authentication.
-6. Automated UI tests and accessibility regression coverage.
+1. AI assistant panel with local streaming-response simulation and conversation history.
+2. Feed composer flow and post creation.
+3. Shared profile surfaces and search.
+4. Data/repository layer, persistence, backend integration, and authentication.
+5. Automated UI tests and accessibility regression coverage.
 
 ## Build
 
