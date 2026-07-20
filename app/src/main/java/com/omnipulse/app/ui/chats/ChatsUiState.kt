@@ -158,8 +158,10 @@ class ChatsUiState internal constructor(
             conversation(id)?.initialMessages.orEmpty().toMutableStateList()
         }
 
-    fun lastMessage(id: String): ChatMessage = messages(id).lastOrNull()
-        ?: ChatMessage("$id-empty", "Start a conversation", "", isFromMe = false)
+    fun lastMessage(id: String): ChatMessage =
+        messagesByConversation[id]?.lastOrNull()
+            ?: conversation(id)?.initialMessages?.lastOrNull()
+            ?: ChatMessage("$id-empty", "Start a conversation", "", isFromMe = false)
 
     fun unreadCount(id: String): Int = unreadByConversation[id]
         ?: conversation(id)?.initialUnreadCount
