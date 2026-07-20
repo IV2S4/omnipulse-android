@@ -146,7 +146,7 @@ private val conversationFixtures = listOf(
 )
 
 @Stable
-class ChatsUiState internal constructor(
+internal class ChatsUiState internal constructor(
     internal val conversations: List<Conversation> = conversationFixtures,
 ) {
     private val messagesByConversation = mutableStateMapOf<String, List<ChatMessage>>()
@@ -225,10 +225,10 @@ class ChatsUiState internal constructor(
 }
 
 @Composable
-fun rememberChatsUiState(): ChatsUiState = remember { ChatsUiState() }
+internal fun rememberChatsUiState(): ChatsUiState = remember { ChatsUiState() }
 
 @Composable
-fun ChatsScreen(
+internal fun ChatsScreen(
     uiState: ChatsUiState,
     modifier: Modifier = Modifier,
 ) {
