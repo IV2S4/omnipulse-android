@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.omnipulse.app.ui.chat.ChatsScreen
 import com.omnipulse.app.ui.clips.ClipsScreen
 import com.omnipulse.app.ui.feed.FeedScreen
 
@@ -92,7 +93,8 @@ fun OmniPulseApp() {
                 when (currentDestination) {
                     Destination.Pulse -> FeedScreen()
                     Destination.Clips -> ClipsScreen()
-                    else -> ComingSoonScreen(currentDestination)
+                    Destination.Chats -> ChatsScreen()
+                    Destination.Assistant -> ComingSoonScreen(currentDestination)
                 }
             }
         }

@@ -24,22 +24,30 @@ This file is the handoff between scheduled automation runs. Check completed work
 - Added play/pause preview state and an action rail for likes, comments, shares, mute, and more options.
 - Preserved pager position and per-clip like, mute, and playback state while moving between app destinations.
 
-## Next MVP slice
-
 ### Slice 3 — 1:1 messaging
 
-- Replace the Chats placeholder with a local conversation inbox showing avatars, presence, timestamps, unread counts, and message previews.
-- Add a chat thread screen with incoming/outgoing message bubbles and a functional local message composer.
-- Support opening and returning from conversations while preserving draft and thread state.
-- Keep fixtures deterministic and offline; backend delivery and persistence remain out of scope.
+- Replaced the Chats placeholder with a deterministic local conversation inbox.
+- Added avatars, online presence, timestamps, unread badges, and message previews that reflect locally sent messages.
+- Added a full chat thread with incoming/outgoing bubbles, timestamps, voice/video entry points, and Android back handling.
+- Added a functional local composer with keyboard send support.
+- Preserved each conversation's draft, locally sent messages, read state, and open thread while moving between app destinations.
+
+## Next MVP slice
+
+### Slice 4 — AI assistant panel
+
+- Replace the AI placeholder with a local assistant conversation panel.
+- Add deterministic suggested prompts and a functional prompt composer.
+- Simulate a short streaming response locally with clear in-progress and stop states.
+- Preserve assistant conversation history and the current draft while moving between app destinations.
+- Keep the experience deterministic and offline; model and backend integration remain out of scope.
 
 ## Backlog
 
-1. AI assistant panel with local streaming-response simulation and conversation history.
-2. Feed composer flow and post creation.
-3. Shared profile surfaces and search.
-4. Data/repository layer, persistence, backend integration, and authentication.
-5. Automated UI tests and accessibility regression coverage.
+1. Feed composer flow and post creation.
+2. Shared profile surfaces and search.
+3. Data/repository layer, persistence, backend integration, and authentication.
+4. Automated UI tests and accessibility regression coverage.
 
 ## Build
 
