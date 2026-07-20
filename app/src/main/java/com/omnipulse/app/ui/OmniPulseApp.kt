@@ -29,14 +29,10 @@ import androidx.compose.material.icons.filled.ChatBubbleOutline
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.PlayCircleOutline
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.AssistChip
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
@@ -66,6 +62,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.omnipulse.app.feature.feed.FeedScreen
 
 private enum class MainDestination(
     val label: String,
@@ -111,163 +108,6 @@ fun OmniPulseApp() {
                 MainDestination.Clips -> ClipsScreen()
                 MainDestination.Messages -> MessagesScreen()
                 MainDestination.Assistant -> AssistantScreen()
-            }
-        }
-    }
-}
-
-private data class FeedPost(
-    val author: String,
-    val handle: String,
-    val time: String,
-    val body: String,
-    val topic: String,
-    val likes: Int,
-    val comments: Int,
-)
-
-private val feedPosts = listOf(
-    FeedPost(
-        author = "Maya Chen",
-        handle = "@mayamakes",
-        time = "12m",
-        body = "Morning light, a quiet trail, and one very determined camera roll.",
-        topic = "Outdoors",
-        likes = 248,
-        comments = 31,
-    ),
-    FeedPost(
-        author = "Jordan Ellis",
-        handle = "@jordane",
-        time = "38m",
-        body = "Shipped the first prototype today. Small progress still changes the direction.",
-        topic = "Building",
-        likes = 186,
-        comments = 22,
-    ),
-    FeedPost(
-        author = "Noor Patel",
-        handle = "@noorplates",
-        time = "1h",
-        body = "A fifteen-minute dinner that somehow tastes like a weekend project.",
-        topic = "Food",
-        likes = 412,
-        comments = 47,
-    ),
-)
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun FeedScreen() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        TopAppBar(
-            title = { BrandTitle() },
-            actions = {
-                IconButton(onClick = {}) {
-                    Icon(Icons.Default.Search, contentDescription = "Search")
-                }
-                IconButton(onClick = {}) {
-                    Icon(Icons.Default.NotificationsNone, contentDescription = "Notifications")
-                }
-            },
-        )
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            item {
-                Text(
-                    text = "Your pulse",
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                )
-                Text(
-                    text = "Fresh updates from people and topics you follow.",
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                Spacer(Modifier.height(8.dp))
-            }
-            items(feedPosts) { post ->
-                FeedPostCard(post)
-            }
-        }
-    }
-}
-
-@Composable
-private fun FeedPostCard(post: FeedPost) {
-    var liked by rememberSaveable(post.author) { mutableStateOf(false) }
-    Card(
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Avatar(initials = post.author.toInitials())
-                Spacer(Modifier.width(12.dp))
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(post.author, fontWeight = FontWeight.SemiBold)
-                    Text(
-                        "${post.handle} · ${post.time}",
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        style = MaterialTheme.typography.bodySmall,
-                    )
-                }
-                IconButton(onClick = {}) {
-                    Icon(Icons.Default.MoreVert, contentDescription = "More options")
-                }
-            }
-            Text(post.body, style = MaterialTheme.typography.bodyLarge)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(
-                        Brush.linearGradient(
-                            listOf(
-                                MaterialTheme.colorScheme.primaryContainer,
-                                MaterialTheme.colorScheme.tertiaryContainer,
-                            ),
-                        ),
-                    ),
-                contentAlignment = Alignment.BottomStart,
-            ) {
-                Surface(
-                    modifier = Modifier.padding(12.dp),
-                    shape = RoundedCornerShape(50),
-                    color = MaterialTheme.colorScheme.surface.copy(alpha = 0.88f),
-                ) {
-                    Text(
-                        post.topic,
-                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                        style = MaterialTheme.typography.labelMedium,
-                    )
-                }
-            }
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                IconButton(onClick = { liked = !liked }) {
-                    Icon(
-                        imageVector = if (liked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                        contentDescription = if (liked) "Unlike" else "Like",
-                        tint = if (liked) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-                Text("${post.likes + if (liked) 1 else 0}")
-                Spacer(Modifier.width(20.dp))
-                Icon(Icons.Default.ChatBubbleOutline, contentDescription = "Comments")
-                Spacer(Modifier.width(6.dp))
-                Text("${post.comments}")
-                Spacer(Modifier.weight(1f))
-                IconButton(onClick = {}) {
-                    Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Share")
-                }
             }
         }
     }
@@ -697,26 +537,6 @@ private fun MessageComposer(
                 Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Send")
             }
         }
-    }
-}
-
-@Composable
-private fun BrandTitle() {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Surface(
-            modifier = Modifier.size(32.dp),
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.primary,
-        ) {
-            Icon(
-                Icons.Default.AutoAwesome,
-                contentDescription = null,
-                modifier = Modifier.padding(7.dp),
-                tint = MaterialTheme.colorScheme.onPrimary,
-            )
-        }
-        Spacer(Modifier.width(10.dp))
-        Text("OmniPulse", fontWeight = FontWeight.Bold)
     }
 }
 
