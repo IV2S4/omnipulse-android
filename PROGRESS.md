@@ -13,12 +13,15 @@ OmniPulse is a buildable single-activity Android application using Kotlin, Jetpa
 - [x] Vertical clips preview with play, like, comment, and share affordances
 - [x] Conversation list, thread navigation, and local message composition
 - [x] Pulse AI panel with suggested prompts and an explicit offline placeholder response
+- [x] State-driven feed feature with repository abstraction and deterministic sample data
+- [x] Local post creation, per-post likes, comment sheets, and comment composition
+- [x] Unit tests for feed behavior and Compose UI tests for navigation and feed interactions
 
 ### Next MVP slice
 
-- [ ] Extract the feed into a state-driven feature layer with repository interfaces
-- [ ] Add post creation, comments, and deterministic unit tests for feed behavior
-- [ ] Add Compose UI tests for primary navigation and feed interactions
+- [ ] Extract Clips into a state-driven feature layer with a media-ready playback contract
+- [ ] Add vertical paging with play, pause, mute, like, and per-clip state
+- [ ] Add deterministic Clips unit tests and Compose UI interaction coverage
 
 ## Later slices
 
@@ -33,7 +36,7 @@ OmniPulse is a buildable single-activity Android application using Kotlin, Jetpa
 Verified on 2026-07-20 with:
 
 ```bash
-./gradlew testDebugUnitTest assembleDebug
+./gradlew testDebugUnitTest assembleDebug lintDebug compileDebugAndroidTestKotlin
 ```
 
-Result: `BUILD SUCCESSFUL` using JDK 21, Android SDK 37, and Build Tools 36.0.0.
+Result: `BUILD SUCCESSFUL` using JDK 21, Android SDK 37, and Build Tools 36.0.0. JVM unit tests ran; Compose instrumentation tests compiled successfully and are ready for an emulator/device run.
