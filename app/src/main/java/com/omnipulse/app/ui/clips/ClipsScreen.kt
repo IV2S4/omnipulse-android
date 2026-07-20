@@ -17,6 +17,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Send
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material.icons.rounded.ChatBubbleOutline
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
@@ -24,8 +26,6 @@ import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.MusicNote
 import androidx.compose.material.icons.rounded.Pause
 import androidx.compose.material.icons.rounded.PlayArrow
-import androidx.compose.material.icons.rounded.VolumeOff
-import androidx.compose.material.icons.rounded.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -376,7 +376,11 @@ private fun ClipActionRail(
             onClick = {},
         )
         ClipAction(
-            icon = if (isMuted) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
+            icon = if (isMuted) {
+                Icons.AutoMirrored.Rounded.VolumeOff
+            } else {
+                Icons.AutoMirrored.Rounded.VolumeUp
+            },
             label = if (isMuted) "Muted" else "Sound",
             contentDescription = if (isMuted) "Unmute clip" else "Mute clip",
             onClick = onMute,
