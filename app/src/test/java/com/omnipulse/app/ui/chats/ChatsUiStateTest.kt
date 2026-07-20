@@ -57,13 +57,13 @@ class ChatsUiStateTest {
     }
 
     @Test
-    fun searchMatchesNamesHandlesAndLatestMessages() {
+    fun searchMatchesNamesHandlesAndMessageHistory() {
         val state = ChatsUiState()
 
         state.updateSearchQuery("noranoise")
         assertEquals(listOf("nora"), state.visibleConversations().map(Conversation::id))
 
-        state.updateSearchQuery("coffee")
+        state.updateSearchQuery("full set")
         assertEquals(listOf("maya"), state.visibleConversations().map(Conversation::id))
 
         state.updateSearchQuery("not in any conversation")
