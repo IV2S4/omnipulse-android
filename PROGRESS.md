@@ -25,22 +25,31 @@ This file is the handoff between scheduled automation runs. Check completed work
 - Preserved independent like, mute, and playback state for each clip while navigating between app destinations.
 - Added an adaptive dark bottom navigation treatment for the Clips experience.
 
-## Next MVP slice
-
 ### Slice 3 — 1:1 messaging
 
-- Replace the Chats placeholder with a conversation inbox.
-- Add a functional chat thread with grouped incoming/outgoing messages and a message composer.
-- Support sending local messages, unread indicators, search, and deterministic sample conversations.
-- Preserve conversation state while navigating between app destinations.
+- Replaced the Chats placeholder with a deterministic five-person conversation inbox.
+- Added live conversation search across names, handles, and the latest message.
+- Added unread badges that clear when a conversation opens.
+- Added functional threads with consecutive incoming/outgoing message grouping and accessible controls.
+- Added per-conversation drafts and local message sending with updated inbox previews.
+- Preserved search, selected thread, drafts, sent messages, and read state across destination changes.
+- Added unit coverage for message grouping, sending, unread state, and search.
+
+## Next MVP slice
+
+### Slice 4 — AI assistant panel
+
+- Replace the AI placeholder with a conversational assistant panel.
+- Add deterministic prompt suggestions and local streaming-response simulation.
+- Support sending prompts, stopping a response, starting a new chat, and retaining conversation history.
+- Preserve assistant state while navigating between app destinations.
 
 ## Backlog
 
-1. AI assistant panel with local streaming-response simulation and conversation history.
-2. Feed composer flow and post creation.
-3. Shared profile surfaces and search.
-4. Data/repository layer, persistence, backend integration, and authentication.
-5. Automated UI tests and accessibility regression coverage.
+1. Feed composer flow and post creation.
+2. Shared profile surfaces and search.
+3. Data/repository layer, persistence, backend integration, and authentication.
+4. Automated UI tests and accessibility regression coverage.
 
 ## Build
 
