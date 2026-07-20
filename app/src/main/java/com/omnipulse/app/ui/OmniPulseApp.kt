@@ -20,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.omnipulse.app.ui.clips.ClipsScreen
 import com.omnipulse.app.ui.feed.FeedScreen
 
 private enum class Destination(
@@ -42,7 +44,7 @@ private enum class Destination(
     Clips(
         label = "Clips",
         icon = Icons.Rounded.PlayCircle,
-        supportingText = "Short videos are the next MVP slice.",
+        supportingText = "Short-form videos",
     ),
     Chats(
         label = "Chats",
@@ -60,6 +62,7 @@ private enum class Destination(
 fun OmniPulseApp() {
     var destinationName by rememberSaveable { mutableStateOf(Destination.Pulse.name) }
     val currentDestination = Destination.valueOf(destinationName)
+    val destinationStateHolder = rememberSaveableStateHolder()
 
     Scaffold(
         bottomBar = {
@@ -85,9 +88,12 @@ fun OmniPulseApp() {
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            when (currentDestination) {
-                Destination.Pulse -> FeedScreen()
-                else -> ComingSoonScreen(currentDestination)
+            destinationStateHolder.SaveableStateProvider(currentDestination.name) {
+                when (currentDestination) {
+                    Destination.Pulse -> FeedScreen()
+                    Destination.Clips -> ClipsScreen()
+                    else -> ComingSoonScreen(currentDestination)
+                }
             }
         }
     }
