@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,10 +24,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.omnipulse.app.ui.clips.ClipsScreen
+import com.omnipulse.app.ui.clips.rememberClipsUiState
 import com.omnipulse.app.ui.feed.FeedScreen
 
 private enum class Destination(
@@ -60,10 +64,19 @@ private enum class Destination(
 fun OmniPulseApp() {
     var destinationName by rememberSaveable { mutableStateOf(Destination.Pulse.name) }
     val currentDestination = Destination.valueOf(destinationName)
+    val clipsUiState = rememberClipsUiState()
+    val isClipsDestination = currentDestination == Destination.Clips
 
     Scaffold(
+        containerColor = if (isClipsDestination) Color.Black else MaterialTheme.colorScheme.background,
         bottomBar = {
-            NavigationBar {
+            NavigationBar(
+                containerColor = if (isClipsDestination) {
+                    Color.Black
+                } else {
+                    MaterialTheme.colorScheme.surface
+                },
+            ) {
                 Destination.entries.forEach { destination ->
                     NavigationBarItem(
                         selected = destination == currentDestination,
@@ -75,6 +88,17 @@ fun OmniPulseApp() {
                             )
                         },
                         label = { Text(destination.label) },
+                        colors = if (isClipsDestination) {
+                            NavigationBarItemDefaults.colors(
+                                selectedIconColor = Color.White,
+                                selectedTextColor = Color.White,
+                                indicatorColor = Color.White.copy(alpha = 0.18f),
+                                unselectedIconColor = Color.White.copy(alpha = 0.62f),
+                                unselectedTextColor = Color.White.copy(alpha = 0.62f),
+                            )
+                        } else {
+                            NavigationBarItemDefaults.colors()
+                        },
                     )
                 }
             }
@@ -87,6 +111,7 @@ fun OmniPulseApp() {
         ) {
             when (currentDestination) {
                 Destination.Pulse -> FeedScreen()
+                Destination.Clips -> ClipsScreen(uiState = clipsUiState)
                 else -> ComingSoonScreen(currentDestination)
             }
         }

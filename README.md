@@ -8,7 +8,7 @@ Built incrementally by a Cursor Automation agent.
 
 ## Current MVP
 
-The first slice includes a Material 3 app shell, four primary destinations, and an interactive social feed with stories, posts, likes, and bookmarks. See [PROGRESS.md](PROGRESS.md) for the completed scope and next slice.
+The current MVP includes a Material 3 app shell, an interactive social feed, and a vertically paged short-form Clips experience with per-clip playback, sound, and like state. See [PROGRESS.md](PROGRESS.md) for the completed scope and next slice.
 
 ## Build
 
