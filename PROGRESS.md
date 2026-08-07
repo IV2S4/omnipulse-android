@@ -56,4 +56,6 @@ This file is the handoff between scheduled automation runs. Check completed work
 ./gradlew assembleDebug
 ```
 
+Last verified with `./gradlew testDebugUnitTest assembleDebug lintDebug`.
+
 The project targets Android API 37 and requires JDK 17 or newer.
