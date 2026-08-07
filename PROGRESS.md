@@ -29,7 +29,7 @@ This file is the handoff between scheduled automation runs. Check completed work
 - Replaced the Chats placeholder with a deterministic five-person conversation inbox.
 - Added live conversation search across names, handles, and the latest message.
 - Added unread badges that clear when a conversation opens.
-- Added functional threads with consecutive incoming/outgoing message grouping and accessible controls.
+- Added functional threads with consecutive incoming/outgoing message grouping, accessible controls, and toolbar/system back navigation.
 - Added per-conversation drafts and local message sending with updated inbox previews.
 - Preserved search, selected thread, drafts, sent messages, and read state across destination changes.
 - Added unit coverage for message grouping, sending, unread state, and search.

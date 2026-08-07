@@ -1,5 +1,6 @@
 package com.omnipulse.app.ui.chats
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -43,6 +44,10 @@ fun ChatsScreen(
     modifier: Modifier = Modifier,
 ) {
     val selectedConversation = uiState.selectedConversationId?.let(uiState::conversation)
+
+    BackHandler(enabled = selectedConversation != null) {
+        uiState.closeConversation()
+    }
 
     if (selectedConversation != null) {
         ChatThreadScreen(
