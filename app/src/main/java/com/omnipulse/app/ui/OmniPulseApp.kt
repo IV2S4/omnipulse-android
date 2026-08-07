@@ -29,6 +29,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.omnipulse.app.ui.clips.ClipsScreen
+import com.omnipulse.app.ui.chats.ChatsScreen
+import com.omnipulse.app.ui.chats.rememberChatsUiState
 import com.omnipulse.app.ui.feed.FeedScreen
 
 private enum class Destination(
@@ -49,7 +51,7 @@ private enum class Destination(
     Chats(
         label = "Chats",
         icon = Icons.Rounded.ChatBubble,
-        supportingText = "Private conversations are coming soon.",
+        supportingText = "Your private conversations.",
     ),
     Assistant(
         label = "AI",
@@ -63,6 +65,7 @@ fun OmniPulseApp() {
     var destinationName by rememberSaveable { mutableStateOf(Destination.Pulse.name) }
     val currentDestination = Destination.valueOf(destinationName)
     val destinationStateHolder = rememberSaveableStateHolder()
+    val chatsUiState = rememberChatsUiState()
 
     Scaffold(
         bottomBar = {
@@ -92,7 +95,8 @@ fun OmniPulseApp() {
                 when (currentDestination) {
                     Destination.Pulse -> FeedScreen()
                     Destination.Clips -> ClipsScreen()
-                    else -> ComingSoonScreen(currentDestination)
+                    Destination.Chats -> ChatsScreen(uiState = chatsUiState)
+                    Destination.Assistant -> ComingSoonScreen(currentDestination)
                 }
             }
         }
