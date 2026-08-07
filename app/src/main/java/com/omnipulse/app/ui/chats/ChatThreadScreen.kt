@@ -1,5 +1,6 @@
 package com.omnipulse.app.ui.chats
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -55,6 +56,8 @@ internal fun ChatThreadScreen(
     val messages = uiState.messages(conversation.id)
     val groups = groupMessages(messages)
     val listState = rememberLazyListState()
+
+    BackHandler(onBack = onBack)
 
     LaunchedEffect(messages.size) {
         if (groups.isNotEmpty()) {
